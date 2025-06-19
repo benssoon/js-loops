@@ -9,6 +9,9 @@
 
 // Tip: je kunt de .repeat() methode gebruiken om een karakter een n aantal keer te herhalen... Dit heb je nog niet geleerd, maar bekijk hiervoor dit MDN-artikel eens: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat
 // ==========================================
+for(i=0; i<5; i++) {
+    console.log('*'.repeat(i+1))
+}
 
 
 // ==========================================
@@ -20,6 +23,10 @@
 // loop...
 // klaar!
 // ==========================================
+for (i=0; i<5; i++) {
+    console.log("loop...");
+}
+console.log("klaar");
 
 
 // ==========================================
@@ -36,6 +43,17 @@
 // 'INV-0008'
 
 // ==========================================
+// I used prompt, so this must be run in the browser to work properly.
+// Couldn't figure out how to get a working user input in just the terminal.
+let getNumInvoices = prompt("How many invoices do you need? ")
+if (getNumInvoices === "") {
+    getNumInvoices = 8;
+}
+for(i=1; i<=getNumInvoices; i++) {
+    numZeros = 4 - i.toString().length;
+    zeros = '0'.repeat(numZeros);
+    console.log(`INV-${zeros}${i}`);
+}
 
 // ==========================================
 // Opdracht 4. Schrijf een for-loop die van 9 tot en met 18 loopt en de uren logt.
