@@ -69,7 +69,14 @@ console.log(birthYears)
 // ==========================================
 
 const leaveHours = [6, 9, 2, 7, 3];
-
+for (const verlof in leaveHours) {
+    if (leaveHours[verlof] % 2 === 0) {
+        leaveHours[verlof] *= 2;
+    } else {
+        leaveHours[verlof] *= 0.5;
+    }
+}
+console.log(leaveHours);
 
 // ==========================================
 // Opdracht 5 (BONUS). Na een dag bij Loop-it Solutions zit je er lekker in, tot je beseft dat één van de machines de
@@ -86,5 +93,8 @@ const leaveHours = [6, 9, 2, 7, 3];
 // ==========================================
 
 const productionCodes = [" abC123  ", "  DEF456", "ghi789  ", "JKL012"];
-
-
+for (const code in productionCodes) {
+    productionCodes[code] = productionCodes[code].trim();
+    productionCodes[code] = productionCodes[code].toUpperCase();
+}
+console.log(productionCodes);
