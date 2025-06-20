@@ -9,6 +9,9 @@
 
 // Tip: je kunt de .repeat() methode gebruiken om een karakter een n aantal keer te herhalen... Dit heb je nog niet geleerd, maar bekijk hiervoor dit MDN-artikel eens: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat
 // ==========================================
+for(i=0; i<5; i++) {
+    console.log('*'.repeat(i+1))
+}
 
 
 // ==========================================
@@ -20,6 +23,10 @@
 // loop...
 // klaar!
 // ==========================================
+for (i=0; i<5; i++) {
+    console.log("loop...");
+}
+console.log("klaar");
 
 
 // ==========================================
@@ -36,6 +43,20 @@
 // 'INV-0008'
 
 // ==========================================
+function addLeadingZeros(numToConvert, totNumDigits) {
+    numZeros = totNumDigits - numToConvert.toString().length;
+    zeros = '0'.repeat(numZeros);
+    return `${zeros}${numToConvert}`;
+}
+// I used prompt, so this must be run in the browser to work properly.
+// Couldn't figure out how to get a working user input in just the terminal.
+let getNumInvoices = prompt("How many invoices do you need? For default of 8, just press Enter.")
+if (getNumInvoices === "") {
+    getNumInvoices = 8;
+}
+for(i=1; i<=getNumInvoices; i++) {
+    console.log(`INV-${addLeadingZeros(i, 4)}`);
+}
 
 // ==========================================
 // Opdracht 4. Schrijf een for-loop die van 9 tot en met 18 loopt en de uren logt.
@@ -55,8 +76,13 @@
 // 17:00 Bijna klaar...
 // 18:00
 // ==========================================
-
-
+for (i=9; i<=18; i++) {
+    const message = {
+        12: " Lunchpauze!",
+        17: " Bijna klaar..."
+    };
+    console.log(`${addLeadingZeros(i, 2)}:00 ${message[i] || ''}`);
+}
 // ==========================================
 // Opdracht 5. Maak een for-loop die van 0 tot 9 loopt en de getallen 0 tot 9 logt.
 // Echter, vanaf het getal 3 komt er een > voor ieder getal te staan, en vanaf het getal 6 komt er >> voor ieder getal te staan.
@@ -72,11 +98,42 @@
 // >> 8
 // >> 9
 // ==========================================
-
+let tick = '';
+let getNumber = prompt("Enter a number, or for default of 9, just press Enter.");
+if(getNumber === '') {
+    getNumber = 9;
+}
+for (i=0; i<=getNumber; i++) {
+    if(i % 3 === 0 && i > 0 && i % 9 !== 0) {
+        tick = '>'.concat(tick);
+    }
+    //console.log(`i: ${i}, i%3: ${i%3}, i%3===0: ${i%3===0}, tick: ${tick}`)
+    if(tick.length === 1) {
+        tick = tick.concat(' ');
+    }
+    console.log(`${tick}${i}`);
+}
 
 // ==========================================
 // Opdracht 6 (BONUS). Schrijf een for-loop die van 0 tot 100 loopt en de getallen print.
 // Echter, voor veelvouden van 3 print je "Fizz" in plaats van het nummer, en voor veelvouden van 5 print je "Buzz". Voor getallen die zowel een veelvoud van 3 als van 5 zijn, print je "FizzBuzz".
+
+fizz = 'Fizz';
+buzz = 'Buzz';
+getNumber = prompt("Enter a number, or for default of 100, just press Enter.");
+if(getNumber === '') {
+    getNumber = 100;
+}
+for (i=0; i<=getNumber; i++) {
+    if(i % 3 === 0 && i > 0) {
+        console.log(fizz);
+    } else if(i % 5 === 0 && i > 0) {
+        console.log(buzz);
+    } else {
+        console.log(i);
+    }
+}
+
 
 // Verwachte uitkomsten:
 // 1

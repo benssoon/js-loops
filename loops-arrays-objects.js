@@ -23,6 +23,10 @@ const salaryDetails = [
 	{name: 'Otis', salary: 2800}
 ];
 
+for (const employee in salaryDetails) {
+	console.log(`Beste ${salaryDetails[employee].name}, je salaris van €${salaryDetails[employee].salary},- is zojuist overgemaakt. Val me nu alsjeblieft niet meer lastig.`)
+}
+
 // ==========================================
 // Opdracht 2. Wanneer iemand een verlof-aanvraag doet, moet Bob eerst uit zijn hoofd uitrekenen of deze medewerker nog
 // voldoende vrije dagen over heeft voor de aanvraag. En dat gaat nog wel eens mis... Zorg ervoor dat het aantal vakantiedagen
@@ -42,7 +46,18 @@ const vacationDays = [
 	{name: 'Ali', totalVacationDays: 20, usedVacationDays: 18},
 	{name: 'Nina', totalVacationDays: 25, usedVacationDays: 5},
 	{name: 'Otis', totalVacationDays: 25, usedVacationDays: 7},
+	{name: 'Ben', totalVacationDays: 25, usedVacationDays: 24}
 ];
+
+for (const i in vacationDays) {
+	const employee = vacationDays[i];
+	let vakantiedag_en = 'vakantiedagen';
+	daysLeft = employee.totalVacationDays - employee.usedVacationDays;
+	if (daysLeft === 1) {
+		vakantiedag_en = 'vakantiedag'
+	}
+	console.log(`${employee.name} heeft nog ${daysLeft} ${vakantiedag_en} over.`);
+}
 
 
 // ==========================================
@@ -62,10 +77,22 @@ const employeesInTraining = [
 	{name: 'Nina', training: 'Teamworktraining', month: 'Maart'},
 	{name: 'Otis', training: 'Teamworktraining', month: 'Februari'},
 ];
+let getMonth = prompt('Voor welke maand wil je zien wie er een opleiding volgt?\n(Default is januari.)');
+getMonth = getMonth.charAt(0).toUpperCase() + getMonth.slice(1);
+if (getMonth === '') {
+	getMonth = 'Januari';
+}
+for (const i in employeesInTraining) {
+	const employee = employeesInTraining[i];
+	const month = employee.month;
+	if (month === getMonth) {
+		console.log(`${employee.name}: ${employee.training}`);
+	}
+}
 
 // ==========================================
 // Opdracht 4a. Medewerkers worden ieder jaar beoordeelt op hun functioneren. Het is aan Bob om de scores om te zetten
-// naar percentages en toe te voegen aan de adminstratie. Schrijf een script dat de score van iedere medewerker in de
+// naar percentages en toe te voegen aan de administrate. Schrijf een script dat de score van iedere medewerker in de
 // array omzet naar een salarisverhoging-percentage en dit in de terminal print. De percentages zijn als volgt:
 // - minder dan 60 = 0%
 // - 60 tot 69 = 2%
@@ -89,6 +116,25 @@ const scores = [
 	{name: 'Otis', score: 100, salaryIncrease: null},
 ];
 
+for (const i in scores) {
+	const employee = scores[i];
+	const score = employee.score;
+	let percentage = 0;
+	if (score < 60) {
+		percentage = 0;
+	} else if (score >= 60 && score < 70) {
+		percentage = 0.02;
+	} else if (score >= 70 && score < 90) {
+		percentage = 0.03;
+	} else if (score >= 90 && score < 100) {
+		percentage = 0.04;
+	} else {
+		percentage = 0.06;
+	}
+	employee.salaryIncrease = percentage;
+	console.log(`${employee.salaryIncrease*100}%`);
+}
+
 // ==========================================
 // Opdracht 4b. Breid je script uit door het percentage op te slaan in de 'salaryIncrease'-property van ieder object in de array.
 
@@ -104,7 +150,7 @@ const scores = [
 // ];
 // ==========================================
 
-
+console.log(scores);
 
 // ==========================================
 // Opdracht 5. Bob wil ervoor zorgen dat al zijn medewerkers een correct bedrijfs-e-mailadres hebben. Deze e-mailadressen moeten
@@ -130,6 +176,16 @@ const employees = [
 	{firstName: 'Nina', lastName: 'Berg'},
 	{firstName: 'Otis', lastName: 'Kuiper'},
 ];
+
+const domain = 'loop-it-solutions.nl';
+
+for (const i in employees) {
+	const employee = employees[i];
+	const firstName = employee.firstName.charAt(0).toLowerCase() + employee.firstName.slice(1);
+	const lastName = employee.lastName.charAt(0).toLowerCase() + employee.lastName.slice(1);
+	employee.email = `${firstName}.${lastName}@${domain}`;
+}
+console.log(employees);
 
 // ==========================================
 // Opdracht 6 (BONUS). Bob wil dat alle e-mailadressen in kleine letters worden opgeslagen, zodat ze consistent zijn.
